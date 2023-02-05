@@ -16,8 +16,10 @@ function onFormSubmit(event) {
   localStorage.removeItem(STORAGE_KEY);
 
   event.currentTarget.reset();
+  if (input.value === '' || textarea.value === '') {
+    return alert('Please fill in the empty fields');
+  }
 }
-
 function onTextareaInput(event) {
   const massage = {
     email: input.value,
