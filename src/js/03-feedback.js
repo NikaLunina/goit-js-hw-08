@@ -12,24 +12,26 @@ populateTextarea();
 
 function onFormSubmit(event) {
   event.preventDefault();
-
-  localStorage.removeItem(STORAGE_KEY);
-
-  event.currentTarget.reset();
   if (input.value === '' || textarea.value === '') {
     return alert('Please fill in the empty fields');
   }
+  localStorage.removeItem(STORAGE_KEY);
+
+  event.currentTarget.reset();
+
 }
 function onTextareaInput(event) {
   const massage = {
     email: input.value,
     message: textarea.value,
   };
+  
   localStorage.setItem(STORAGE_KEY, JSON.stringify(massage));
 }
 
 function populateTextarea() {
   const savedMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  
   if (savedMessage) {
     console.log(savedMessage);
     textarea.value = savedMessage;
